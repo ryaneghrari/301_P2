@@ -8,7 +8,7 @@ INCDIR = -I../	#additional directories to look for include files
 CCFLAGS = -Wall -Wno-deprecated $(INCDIR) -g -c	#compiler options
 LDFLAGS = -Wall -Wno-deprecated -g		#linker options
 
-OBJS = ASMParser.o BinaryParser.o Instruction.o Opcode.o RegisterTable.o
+OBJS = ASM.o BIN.o Run.o ASMParser.o BinaryParser.o Instruction.o Opcode.o RegisterTable.o
 EXECS = BIN ASM RUN
 
 all:    $(EXECS)
