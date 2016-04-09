@@ -1,0 +1,13 @@
+#my sweet config file
+ 
+program_input=Input.asm
+
+memory_contents_input=MemConInput.txt
+
+register_file_input=RegFileInput.txt
+
+output_mode=batch
+
+debug_mode=true
+
+print_memory_contents=true
