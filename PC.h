@@ -9,15 +9,15 @@ using namespace std;
 class PC
 {
      private:
-         Instructions myInstructions[];
+         //Instruction myInstructions[];
 		 int          numInstructions;
 
      public:
          PC();
-         PC(Intructions[] instructions);
+         //PC(Instruction instructions[]);
          ~PC();
 
-		 Instruction getInstruction(int index);
-		 int         getNumInstructions(){return numInstructions}
+		 //Instruction getInstruction(int index);
+		 int         getNumInstructions(){return numInstructions;}
 
 };
