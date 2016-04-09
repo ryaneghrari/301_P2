@@ -9,9 +9,12 @@ CCFLAGS = -Wall -Wno-deprecated $(INCDIR) -g -c	#compiler options
 LDFLAGS = -Wall -Wno-deprecated -g		#linker options
 
 OBJS = ASMParser.o BinaryParser.o Instruction.o Opcode.o RegisterTable.o
-EXECS = BIN ASM
+EXECS = BIN ASM RUN
 
 all:    $(EXECS)
+
+RUN: Run.o
+	$(CC) -Wall -o RUN Run.o
 
 BIN: BIN.o Instruction.o Opcode.o RegisterTable.o BinaryParser.o 
 	$(CC) -Wall -o BIN BIN.o Opcode.o BinaryParser.o RegisterTable.o Instruction.o
