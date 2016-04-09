@@ -1,4 +1,5 @@
 #include "Instruction.h"
+#include <vector>
 
 using namespace std;
  
@@ -9,15 +10,16 @@ using namespace std;
 class PC
 {
      private:
-         //Instruction myInstructions[];
+         vector<Instruction> myInstructions;
 		 int          numInstructions;
 
      public:
          PC();
-         //PC(Instruction instructions[]);
+         PC(vector<Instruction> instrs);
          ~PC();
 
-		 //Instruction getInstruction(int index);
+		 Instruction getInstruction(int index);
 		 int         getNumInstructions(){return numInstructions;}
+		 bool        isEmpty();
 
 };
