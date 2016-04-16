@@ -1,0 +1,75 @@
+The register file in the MIPS ALU datapath has 3 components.  The RegWrite component takes in a sinble bit indicating whether or not the instruction requires that data be written to a register.  Think of RTYPE instructions such as add, which require a computation and subsequent writing of the computation to a register.  There are two ReadReg ports, which each take in a 5 bit binary number specifying the two registers that will be read from.  There are also two ReadData ports which serve the purpose of essentially passing the data contained in the correpsonding register(s) in the ReadReg ports to the next part of the MIPS datapath, which is the ALU execution stage.  Note that these pass along a 32 bit binary number.  For the purpose of this project, the "Register File" will also have to retrieve the data corresponding to the registers inside the "ReadReg" ports, and then pass this data along.  There is also a WriteReg port which takes in a 5 bit binary number specifying the register to write to, depending on the intruction.  Lastly, there is a WriteData port that takes in a 32 bit binary number that is the result of later ALU computations on binary data.  This is written to as long as the RegWrite port contains a 1 (TRUE).
+
+The following are the exact specifications of the ports used in the register file depending on the instruction type.
+
+GENERAL RTYPE INSTRUCTIONS:
+1) RegWrite = TRUE
+2) Uses ReadReg1, ReadReg2, ReadData1, ReadData2, WriteReg, WriteData
+
+GENERAL ITYPE INSRUCTIONS:
+1) RegWrite = TRUE
+2) Uses ReadReg1, ReadData1, WriteReg, WriteData
+
+GENERAL JTYPE INSTRUCTIONS:
+1) RegWrite = FALSE
+2) NO SOURCE OR DESTINATION REGISTERS TO READ OR WRITE TO
+In JTYPE instructions, the register file is not really used like in other instructions
+
+Here at the specifics for each instruction:
+
+ADD: ex) add $s0, $t1, $t2
+- REGWRITE: TRUE
+- Uses ReadReg1
+- Uses ReadReg2
+- Uses ReadData1
+- Uses ReadData2
+- Uses WriteReg
+- Uses WriteData
+
+SUB: ex) sub $s0, $t1, $t2
+- REGWRITE: TRUE
+- Uses ReadReg1
+- Uses ReadReg2
+- Uses ReadData1
+- Uses ReadData2
+- Uses WriteReg
+- Uses WriteData
+
+ADDI: ex) addi $s0, $t1, 10
+- REGWRITE: TRUE
+- Uses ReadReg1
+- Uses ReadData1
+- Uses WriteReg
+- Uses WriteData
+
+SLT: ex) slt $s0, $t2, $t2
+- REGWRITE: TRUE
+- Uses ReadReg1
+- Uses ReadReg2
+- Uses ReadData1
+- Uses ReadData2
+- Uses WriteReg
+- Uses WriteData (although it only writes a 1 or 0)
+
+LW: ex) lw $t2, 4($t0)
+- REGWRITE: TRUE
+- Uses ReadReg1
+- Uses ReadData1
+- Uses WriteReg
+- Uses WriteData
+
+SW: ex) sw $t0, 48($s3) --> Read what's in a register and store in memory
+- REGWRITE: FALSE
+- Uses ReadReg1
+- Uses ReadData1
+No register writing?
+
+BEQ: ex) $t1, $t2, 0xBLAHBLAH
+- REGWRITE: FALSE
+- Uses ReadReg1
+- Uses ReadReg2
+- Uses ReadData1
+- Uses ReadData2
+
+J: ex) j 0xBLAHBLAH
+- Doesn't use shit, amirite?
