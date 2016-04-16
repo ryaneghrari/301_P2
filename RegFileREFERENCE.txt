@@ -1,4 +1,4 @@
-The register file in the MIPS ALU datapath has 3 components.  The RegWrite component takes in a sinble bit indicating whether 
+The register file in the MIPS ALU datapath has 7 components.  The RegWrite component takes in a sinble bit indicating whether 
 or not the instruction requires that data be written to a register.  
 Think of RTYPE instructions such as add, which require a computation and subsequent writing of the computation to a register.  
 There are two ReadReg ports, which each take in a 5 bit binary number specifying the two registers that will be read from.  
