@@ -1,4 +1,14 @@
-The register file in the MIPS ALU datapath has 3 components.  The RegWrite component takes in a sinble bit indicating whether or not the instruction requires that data be written to a register.  Think of RTYPE instructions such as add, which require a computation and subsequent writing of the computation to a register.  There are two ReadReg ports, which each take in a 5 bit binary number specifying the two registers that will be read from.  There are also two ReadData ports which serve the purpose of essentially passing the data contained in the correpsonding register(s) in the ReadReg ports to the next part of the MIPS datapath, which is the ALU execution stage.  Note that these pass along a 32 bit binary number.  For the purpose of this project, the "Register File" will also have to retrieve the data corresponding to the registers inside the "ReadReg" ports, and then pass this data along.  There is also a WriteReg port which takes in a 5 bit binary number specifying the register to write to, depending on the intruction.  Lastly, there is a WriteData port that takes in a 32 bit binary number that is the result of later ALU computations on binary data.  This is written to as long as the RegWrite port contains a 1 (TRUE).
+The register file in the MIPS ALU datapath has 3 components.  The RegWrite component takes in a sinble bit indicating whether 
+or not the instruction requires that data be written to a register.  
+Think of RTYPE instructions such as add, which require a computation and subsequent writing of the computation to a register.  
+There are two ReadReg ports, which each take in a 5 bit binary number specifying the two registers that will be read from.  
+There are also two ReadData ports which serve the purpose of essentially passing the data contained in the correpsonding 
+register(s) in the ReadReg ports to the next part of the MIPS datapath, which is the ALU execution stage.  Note that these pass
+along a 32 bit binary number.  For the purpose of this project, the "Register File" will also have to retrieve the data 
+corresponding to the registers inside the "ReadReg" ports, and then pass this data along.  There is also a WriteReg port which 
+takes in a 5 bit binary number specifying the register to write to, depending on the intruction.  Lastly, there is a WriteData 
+port that takes in a 32 bit binary number that is the result of later ALU computations on binary data.  This is written to as 
+long as the RegWrite port contains a 1 (TRUE).
 
 The following are the exact specifications of the ports used in the register file depending on the instruction type.
 
