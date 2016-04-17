@@ -149,6 +149,10 @@ int main(int argc, char* argv[]){
 	cout << printContents << endl;
 	
 	in.close();
+
+	
+	
+
     
     return(0);
 }
