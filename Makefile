@@ -8,13 +8,13 @@ INCDIR = -I../	#additional directories to look for include files
 CCFLAGS = -Wall -Wno-deprecated $(INCDIR) -g -c	#compiler options
 LDFLAGS = -Wall -Wno-deprecated -g		#linker options
 
-OBJS = ASM.o BIN.o Run.o ASMParser.o BinaryParser.o Instruction.o Opcode.o RegisterTable.o
+OBJS = ASM.o BIN.o Run.o ASMParser.o BinaryParser.o Instruction.o Opcode.o RegisterTable.o InstructionMem.o
 EXECS = BIN ASM RUN
 
 all:    $(EXECS)
 
 RUN: Run.o
-	$(CC) -Wall -o RUN Run.o
+	$(CC) -Wall -o RUN Run.o Instruction.o ASMParser.o Opcode.o RegisterTable.o InstructionMem.o 
 
 BIN: BIN.o Instruction.o Opcode.o RegisterTable.o BinaryParser.o 
 	$(CC) -Wall -o BIN BIN.o Opcode.o BinaryParser.o RegisterTable.o Instruction.o
@@ -25,6 +25,8 @@ ASM: ASM.o Instruction.o Opcode.o RegisterTable.o ASMParser.o
 ASMParser.o: ASMParser.h Opcode.h RegisterTable.h Instruction.h
 
 BinaryParser.o: BinaryParser.h Opcode.h RegisterTable.h Instruction.h
+
+InstructionMem.o: Opcode.h RegisterTable.h Instruction.h InstructionMem.h
 
 Instruction.o: Opcode.h RegisterTable.h Instruction.h
 

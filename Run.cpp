@@ -1,6 +1,12 @@
 #include <fstream>
 #include <iostream>
 
+#include "ASMParser.h"
+#include "InstructionMem.h"
+#include "Instruction.h"
+#include "RegisterTable.h"
+#include "Opcode.h"
+
 using namespace std;
 
 // Ryan Eghrari - re9rk
@@ -17,7 +23,9 @@ using namespace std;
 
 int main(int argc, char* argv[]){
     
-    if(argc != 2){
+/*********************Config**********************/
+    
+	if(argc != 2){
         cout << "Usage: " << argv[0] << " <config file name>" << endl;
         exit(0);
     }
@@ -149,9 +157,42 @@ int main(int argc, char* argv[]){
 	cout << printContents << endl;
 	
 	in.close();
+/*************************************************************/
 
+
+/*********************Instruction Memory**********************/
+
+	InstructionMem instructionMemory;
+
+	ASMParser *parser;
+
+	parser = new ASMParser(inputFileName);
+
+	if(parser->isFormatCorrect() == false){
+		cerr << "Format of ASM input file is incorrect" << endl;
+		exit(1);
+	}
+
+	Instruction i;
+
+	//Iterate through instructions, printing each encoding.
+	i = parser->getNextInstruction();
 	
-	
+	while( i.getOpcode() != UNDEFINED)
+	{
+		// cout << i.getString() << endl;
+		cout << i.getEncoding() << endl;
+
+		instructionMemory.setInstruction(i);
+
+		i = parser->getNextInstruction();
+	}
+
+	delete parser;
+
+	instructionMemory.print();
+
+/*************************************************************/
 
     
     return(0);
