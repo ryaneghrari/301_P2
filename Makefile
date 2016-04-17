@@ -13,7 +13,7 @@ EXECS = BIN ASM RUN
 
 all:    $(EXECS)
 
-RUN: Run.o
+RUN: Run.o Instruction.o ASMParser.o Opcode.o RegisterTable.o InstructionMem.o
 	$(CC) -Wall -o RUN Run.o Instruction.o ASMParser.o Opcode.o RegisterTable.o InstructionMem.o 
 
 BIN: BIN.o Instruction.o Opcode.o RegisterTable.o BinaryParser.o 
