@@ -23,6 +23,7 @@ class ALU{
 		int convertBinaryToDecimal(string binary);
 		string decimal_binary(int n);
 		bool zero;
+		string id;
 };
 
 #endif

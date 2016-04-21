@@ -7,6 +7,7 @@
 #include "Instruction.h"
 #include "RegisterTable.h"
 #include "Opcode.h"
+//#include "PC.h"
 
 using namespace std;
 
@@ -163,7 +164,11 @@ int main(int argc, char* argv[]){
 
 /*********************Instruction Memory**********************/
 
+	vector<string> instructionMemory;
+
+/*
 	InstructionMem instructionMemory;
+*/
 
 	ASMParser *parser;
 
@@ -184,28 +189,43 @@ int main(int argc, char* argv[]){
 		// cout << i.getString() << endl;
 		cout << i.getEncoding() << endl;
 
-		instructionMemory.setInstruction(i);
+		instructionMemory.push_back(i.getEncoding());
+
+		//instructionMemory.setInstruction(i);
 
 		i = parser->getNextInstruction();
 	}
 
 	delete parser;
 
-	instructionMemory.print();
+	//instructionMemory.print();
+
 
 /*************************************************************/
 
+/*********************PC **************************/
+
+//	PC pc(instructionMemory.size());
+	
+    //print instruction mem.
+/*************************************************************/
 
 /*********************Register file **************************/
 
-	ifstream infile;
-	infile.open(regFileName);
-
-	RegisterFile registerFile(infile);
+	RegisterFile registerFile(regFileName);
 
     registerFile.printRegContents();	
 
 /*************************************************************/
+
+/*********************Register file **************************/
+
+	MeUnit registerFile(regFileName);
+
+    registerFile.printRegContents();	
+
+/*************************************************************/
+
 
     
     return(0);

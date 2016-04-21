@@ -7,6 +7,11 @@ using namespace std;
 
 ALU::ALU(){}
 
+ALU::ALU(string id)
+{
+	this->id = id;
+}
+
 string ALU::calculate(string input1, string input2, string opcodeName) {
 	if (opcodeName == "add" || opcodeName == "addi" || opcodeName == "sw" || opcodeName == "lw" )
 		return add(input1,input2);

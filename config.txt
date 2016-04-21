@@ -6,6 +6,7 @@ program_input=Input.asm
 memory_contents_input=MemConInput.txt
 
 register_file_input=RegFileInput.txt
+#register_file_input=test.txt
 
 output_mode=batch
 
