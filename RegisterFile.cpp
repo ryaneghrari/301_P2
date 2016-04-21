@@ -7,15 +7,23 @@ RegisterFile::RegisterFile()
 {
 	myRegisters[0] = '0'; //initialize zero reg
 
-	for (int i = 1; i < 33; i++)
+	for (int i = 1; i < 32; i++)
 	{
 		myRegisters[i] = "NULL"; // initialize values to null
 	}
 }
 
 // Constructor that takes in Register Input File
-RegisterFile::RegisterFile(ifstream& infile)
+RegisterFile::RegisterFile(string filename)
 {
+	myRegisters[0] = '0'; //initialize zero reg
+	for (int i = 1; i < 32; i++)
+	{
+		myRegisters[i] = "NULL"; // initialize values to null
+	}
+
+	ifstream infile(filename.c_str());
+
 	// Check to make sure infile is good
 	if (!infile)
 	{
@@ -54,7 +62,7 @@ RegisterFile::RegisterFile(ifstream& infile)
 // Deconstructor
 RegisterFile::~RegisterFile(){}
 
-// Method for register file that usesone read register
+// Method for register file that uses one read register
 // Returns the contents of what is inside readReg1
 string RegisterFile::regExecute(int readReg1)
 {
@@ -63,14 +71,14 @@ string RegisterFile::regExecute(int readReg1)
 
 // Method for register file that uses only teo read registers
 // Return the contents of what is inside both register 1 and register 2 in array form
-string* RegisterFile::regExecute(int readReg1, int readReg2)
+vector<string> RegisterFile::regExecute(int readReg1, int readReg2)
 {
-	string contents[2];
+	vector<string> contents(2);  
 
 	contents[0] = myRegisters[readReg1];
 	contents[1] = myRegisters[readReg2];
 
-	return *contents; 
+	return contents; 
 }
 
 // General get method that gets contents of any register given its number
@@ -90,7 +98,7 @@ void RegisterFile::setRegData(int regNum, string regData)
 // Useful debugging tool that prints register numbers with their content
 void RegisterFile::printRegContents()
 {
-	for (int i = 0; i < 33; i++)
+	for (int i = 0; i < 32; i++)
 	{
 		cout << "Register #" << i << " : " << myRegisters[i] << endl; // initialize values to null
 	}
