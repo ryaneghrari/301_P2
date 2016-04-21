@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <stdlib.h>
+#include <vector>
 
 using namespace std;
 
@@ -22,7 +23,7 @@ class RegisterFile
 		RegisterFile();
 
 		// Constructor for register file takes in the Register Input File
-		RegisterFile(ifstream& infile);
+		RegisterFile(string filename);
 
 		// Deconstructor
 		~RegisterFile();
@@ -33,7 +34,7 @@ class RegisterFile
 
 		// Method for register file that uses only teo read registers
 		// Return the contents of what is inside both register 1 and register 2 in array form
-		string* regExecute(int readReg1, int readReg2);
+		vector<string> regExecute(int readReg1, int readReg2);
 
 		// General get method that gets contents of any register given its number
 		string getRegContents(int regNum);
@@ -48,8 +49,8 @@ class RegisterFile
 
 	private:
 
-		// Array containing contents of registers 0 -32
-		string myRegisters[33];
+		// Array containing contents of registers 0 - 32
+		string myRegisters[32];
 };
 
 #endif
