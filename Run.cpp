@@ -3,6 +3,7 @@
 
 #include "ASMParser.h"
 #include "InstructionMem.h"
+#include "RegisterFile.h"
 #include "Instruction.h"
 #include "RegisterTable.h"
 #include "Opcode.h"
@@ -197,35 +198,12 @@ int main(int argc, char* argv[]){
 
 /*********************Register file **************************/
 
-	RegisterFile registerFile;
+	ifstream infile;
+	infile.open(regFileName);
 
-	ASMParser *parser;
+	RegisterFile registerFile(infile);
 
-	parser = new ASMParser(inputFileName);
-
-	if(parser->isFormatCorrect() == false){
-		cerr << "Format of ASM input file is incorrect" << endl;
-		exit(1);
-	}
-
-	Instruction i;
-
-	//Iterate through instructions, printing each encoding.
-	i = parser->getNextInstruction();
-	
-	while( i.getOpcode() != UNDEFINED)
-	{
-		// cout << i.getString() << endl;
-		cout << i.getEncoding() << endl;
-
-		instructionMemory.setInstruction(i);
-
-		i = parser->getNextInstruction();
-	}
-
-	delete parser;
-
-	instructionMemory.print();
+    registerFile.printRegContents();	
 
 /*************************************************************/
 

@@ -1,5 +1,5 @@
-#ifndef_REGISTERFILE_H
-#define_REGISTERFILE_H
+#ifndef _REGISTERFILE_H
+#define _REGISTERFILE_H
 
 #include <fstream>
 #include <string>
@@ -27,13 +27,13 @@ class RegisterFile
 		// Deconstructor
 		~RegisterFile();
 
-		// Method for register file that usesone read register
+		// Method for register file that uses one read register
 		// Returns the contents of what is inside readReg1
 		string regExecute(int readReg1);
 
 		// Method for register file that uses only teo read registers
 		// Return the contents of what is inside both register 1 and register 2 in array form
-		string* regExecute(int readReg1, readReg2);
+		string* regExecute(int readReg1, int readReg2);
 
 		// General get method that gets contents of any register given its number
 		string getRegContents(int regNum);

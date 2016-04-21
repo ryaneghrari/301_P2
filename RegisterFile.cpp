@@ -20,7 +20,7 @@ RegisterFile::RegisterFile(ifstream& infile)
 	if (!infile)
 	{
 		cerr << "unable to open input file: " << infile << endl;
-		return -1;
+		return;
 	}
 
 	// Fill up registers with data
@@ -56,7 +56,7 @@ RegisterFile::~RegisterFile(){}
 
 // Method for register file that usesone read register
 // Returns the contents of what is inside readReg1
-string RegisterFile::RegExecute(int readReg1)
+string RegisterFile::regExecute(int readReg1)
 {
 	return myRegisters[readReg1];
 }
@@ -70,7 +70,7 @@ string* RegisterFile::regExecute(int readReg1, int readReg2)
 	contents[0] = myRegisters[readReg1];
 	contents[1] = myRegisters[readReg2];
 
-	return conents; 
+	return *contents; 
 }
 
 // General get method that gets contents of any register given its number
