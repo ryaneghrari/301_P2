@@ -8,36 +8,25 @@ Alu::Alu(){}
 
 string Alu::add(string a, string b)
 {
-	if(a.at(0) == '1')
+	if((a.size() != 32) || (b.size() != 32))
 	{
-		//should be negative
+		cerr << "cannot perform add on bit size less than 32 bits" << endl;
+		return "ERROR";
 	}
 	
-	if(b.at(0) == '1')
-	{
-		//should be negative
-	}
 
 	int numA = strtol(a.c_str(),NULL,2);	
 	int numB = strtol(b.c_str(),NULL,2);	
 
 	int sum = numA + numB;
-    
+   
+	cout << sum << endl;
+
 	return decimal_binary(sum);
 }
 
 string Alu::sub(string a, string b)
 {
-	if(a.at(0) == '1')
-	{
-		//should be negative
-	}
-	
-	if(b.at(0) == '1')
-	{
-		//should be negative
-	}
-
 	int numA = strtol(a.c_str(),NULL,2);	
 	int numB = strtol(b.c_str(),NULL,2);	
 

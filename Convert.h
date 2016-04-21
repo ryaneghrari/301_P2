@@ -16,4 +16,9 @@ class Convert
 
 		 string      decimal_hex(int decimal);
 		 int         hex_decimal(string hex);
+
+		 string      dec_binary(int dec);
+		 int         binary_dec(string binary);
+
+
 };
