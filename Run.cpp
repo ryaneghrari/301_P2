@@ -7,7 +7,8 @@
 #include "Instruction.h"
 #include "RegisterTable.h"
 #include "Opcode.h"
-//#include "PC.h"
+#include "PC.h"
+#include "DataMemory.h"
 
 using namespace std;
 
@@ -142,7 +143,7 @@ int main(int argc, char* argv[]){
 		}
 		else
 		{
-			cerr << "invalid config file" << endl;
+			cerr << "We do not support a paramater in your config" << endl;
             exit(0);
 		}
         
@@ -162,7 +163,7 @@ int main(int argc, char* argv[]){
 /*************************************************************/
 
 
-/*********************Instruction Memory**********************/
+cout << "/*********************Instruction Memory**********************/" << endl;
 
 	vector<string> instructionMemory;
 
@@ -201,30 +202,30 @@ int main(int argc, char* argv[]){
 	//instructionMemory.print();
 
 
-/*************************************************************/
+cout << "/*************************************************************/" << endl;
 
-/*********************PC **************************/
-
-//	PC pc(instructionMemory.size());
+cout << "/*********************PC *************************************/" << endl;
+	PC pc(instructionMemory.size());
 	
-    //print instruction mem.
-/*************************************************************/
+    for(int i = 0; i < instructionMemory.size(); i++)
+	{
+		cout << instructionMemory[i] << endl;
+	}
+cout << "/*************************************************************/" << endl;
 
-/*********************Register file **************************/
+cout << "/*********************Register file **************************/" << endl;
 
 	RegisterFile registerFile(regFileName);
 
     registerFile.printRegContents();	
 
-/*************************************************************/
+cout << "/*************************************************************/" << endl;
 
-/*********************Register file **************************/
+cout << "/*********************Data memory ****************************/" << endl;
 
-	MeUnit registerFile(regFileName);
+	DataMemory dataMemory(memFileName);
 
-    registerFile.printRegContents();	
-
-/*************************************************************/
+cout << "/*************************************************************/" << endl;
 
 
     

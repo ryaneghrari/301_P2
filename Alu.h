@@ -9,6 +9,7 @@ using namespace std;
 class ALU{
 	public:
 		ALU();
+		ALU(string filename);
 		~ALU() {};
 		string add(string a, string b);
 		string sll(string a);

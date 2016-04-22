@@ -17,6 +17,7 @@ ASMParser::ASMParser(string filename)
   else{
     string line;
     while( getline(in, line)){
+		cout << line << endl;
       string opcode("");
       string operand[80];
       int operand_count = 0;
